@@ -49,9 +49,9 @@ public class FormSteps extends Home {
         btnSubmit.click();
     }
 
-    public void validateAssertion(){
-        String result= "The form was successfully submitted!";
+    public void validateMsg(){
+        String result = "The form was successfully submitted!";
         Assert.assertEquals(assertion.getText(), result);
-        System.out.println(assertion.getText());
+        //System.out.println(assertion.getText());
     }
 }

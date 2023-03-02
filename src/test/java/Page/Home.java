@@ -6,6 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Home {
+
+    public Home(WebDriver driver){
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
     private WebDriver driver;
 
     @FindBy(id = "first-name")
@@ -36,8 +42,5 @@ public class Home {
     public WebElement assertion;
 
 
-    public Home(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
+
 }

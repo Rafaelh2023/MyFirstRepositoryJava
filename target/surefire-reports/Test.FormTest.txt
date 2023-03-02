@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: Test.FormTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 3, Time elapsed: 3.076 sec <<< FAILURE!
+openApp(Test.FormTest)  Time elapsed: 2.616 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at Test.FormTest.openApp(FormTest.java:25)
+
