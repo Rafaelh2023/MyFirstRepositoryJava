@@ -14,5 +14,6 @@ public class Base {
         public static String BASE_URL = "https://formy-project.herokuapp.com/form";
         public static String CHROME_DRIVER_LOCATION = "resources/driver/chromedriver.exe";
         public static String EDGE_DRIVER_LOCATION = "resources/driver/msedgedriver_110.exe";
+        public static String FIREFOX_DRIVER_LOCATION = "resources/driver/geckodriver.exe";
     }
 }
