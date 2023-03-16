@@ -33,9 +33,9 @@ public class TestApplication {
             System.setProperty("webdriver.chrome.driver", Base.UtilsDriver.CHROME_DRIVER_LOCATION);
             driver = new ChromeDriver();
         }
-        driver.get(Base.UtilsDriver.BASE_URL);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get(Base.UtilsDriver.BASE_URL);
         stepsAction = new FormSteps(driver);
     }
 
@@ -58,7 +58,7 @@ public class TestApplication {
 
     @AfterTest
     public void closeBrowser() throws InterruptedException{
-        Thread.sleep(1000);
+        Thread.sleep(100);
         driver.close();
     }
 }
