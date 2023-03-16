@@ -1,56 +1,80 @@
 package Test;
+
 import Step.FormSteps;
 import Utilities.Base;
+import Utilities.Screenshots;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class FormTest {
 
-    WebDriver driver;
-    FormSteps st;
-    @BeforeTest
-    public void openApp(){
+    private WebDriver driver;
+    private FormSteps st;
+    ExtentReports report;
+    ExtentTest test;
 
-        /**
-            System.setProperty("webdriver.chrome.driver", "resources/driver/chromedriver.exe");
-            System.setProperty("webdriver.chrome.driver", Base.UtilsDriver.CHROME_DRIVER_LOCATION);
-            driver = new ChromeDriver();
-         **/
+    @BeforeSuite
+    public void openApp() throws IOException {
+        report = new ExtentReports(Base.UtilsDriver.DIRECTORY_REPORT);
+        test = report.startTest("Type information in Form and Submit");
+        test.log(LogStatus.INFO, "Browser Started");
         System.setProperty("webdriver.edge.driver", Base.UtilsDriver.EDGE_DRIVER_LOCATION);
         driver = new EdgeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        test.log(LogStatus.INFO, "Browser Maximized");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(Base.UtilsDriver.BASE_URL);
+        test.log(LogStatus.INFO, "Web application Opened");
         st = new FormSteps(driver);
+        Screenshots.takeScreenShots(driver);
     }
 
     @Test(testName = "Send Form")
-    public void submitForm(){
+    public void submitForm() throws IOException {
         st.enterFirstName();
+        test.log(LogStatus.INFO, "Enter First Name");
         st.enterLastName();
+        test.log(LogStatus.INFO, "Enter Last Name");
         st.enterJobTitle();
+        test.log(LogStatus.INFO, "Enter Job Title");
         st.clickOptionCollege();
+        test.log(LogStatus.INFO, "Click in Highest level of Education");
         st.clickOptionSex();
+        test.log(LogStatus.INFO, "Click on Sex option");
         st.selectJobExperience();
+        test.log(LogStatus.INFO, "Select Job Experience");
         st.enterDate();
+        test.log(LogStatus.INFO, "Enter Date");
         st.clickSubmit();
+        test.log(LogStatus.INFO, "Click in Button Submit");
+        Screenshots.takeScreenShots(driver);
     }
-
     @Test(testName = "Validate Message")
-    public void validateMessage(){
+    public void validateMessage() throws IOException {
         st.validateMsg();
-    }
+        test.log(LogStatus.PASS, "Verified Message: The form was successfully submitted!");
+        Screenshots.takeScreenShots(driver);
+        /**
+        if(testResult.getStatus() == ITestResult.SUCCESS){
+            Screenshots.takeScreenShots(driver, testResult.getName());
+           // String imagePath = test.addScreenCapture(path);
 
-    @AfterTest
+        }**/
+    }
+    @AfterSuite
     public void closeApp() throws InterruptedException {
-        Thread.sleep(2000);
-        driver.close();
+        Thread.sleep(20);
+        report.endTest(test);
+        report.flush();
+        driver.quit();
     }
-
 }

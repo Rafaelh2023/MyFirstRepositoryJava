@@ -7,12 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Home {
 
+    private WebDriver driver;
+
     public Home(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    private WebDriver driver;
 
     @FindBy(id = "first-name")
     public WebElement firstName;
@@ -40,7 +40,5 @@ public class Home {
 
     @FindBy(xpath = "//div[contains(@class, 'alert alert-success')]")
     public WebElement assertion;
-
-
 
 }

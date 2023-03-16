@@ -13,6 +13,7 @@ public class FormSteps extends Home {
 
     public void enterFirstName(){
         String firstName = "Rafael";
+        //WaitTypes.WaitElement.waitForElement(this.firstName, 3);
         this.firstName.sendKeys(firstName);
     }
 
@@ -52,6 +53,5 @@ public class FormSteps extends Home {
     public void validateMsg(){
         String result = "The form was successfully submitted!";
         Assert.assertEquals(assertion.getText(), result);
-        //System.out.println(assertion.getText());
     }
 }
