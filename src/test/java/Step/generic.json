@@ -1,0 +1,22 @@
+{
+   "manager":{
+      "nombre": "",
+      "edad": 30,
+      "empleados":[{
+          "nombre": "Emp A",
+          "edad": "20",
+          "FechaNacimiento": "03/03/2000"
+        },
+        {
+          "nombre": "Emp B",
+          "edad": "30",
+          "FechaNacimiento": "02/06/1992"
+        },
+        {
+          "nombre": "Emp C",
+          "edad": "44",
+          "FechaNacimiento": "03/09/1979"
+        }
+      ]
+   }
+}
