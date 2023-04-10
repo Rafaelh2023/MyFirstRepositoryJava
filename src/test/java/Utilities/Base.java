@@ -17,6 +17,7 @@ public class Base {
         public static String FIREFOX_DRIVER_LOCATION = "resources/driver/geckodriver.exe";
         public static String DIRECTORY_SCREEN_SHOTS  = "Report/";
         public static String DIRECTORY_REPORT = "Report/form.html";
+        public static String JOSONFILE = "src/test/java/Step/generic.json";
 
     }
 }
